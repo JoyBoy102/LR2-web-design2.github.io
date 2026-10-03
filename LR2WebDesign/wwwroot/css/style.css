@@ -1,0 +1,176 @@
+﻿:root {
+    /* --- Основные фоны и текст --- */
+    --color-bg-page: #EEF8FF; /* Фон страницы */
+    --color-bg-card: #FFFFFF; /* Фон карточек */
+    --color-heading: #0B1B2B; /* Заголовки H1-H3 */
+    --color-text-primary: #2A3B4D; /* Обычный текст */
+    --color-text-secondary: #5A6B7D; /* Вторичный текст (подписи) */
+    --color-border-card: #D7E3EE; /* Границы карточек */
+    /* --- Header и Меню --- */
+    --color-header-glass: #EEF8FF; /* Header (фон, стекло) */
+    --color-menu-link: #5A6B7D; /* Меню — обычная ссылка */
+    --color-menu-hover: #7D53DE; /* Меню — активная hover */
+    --color-menu-underline: #34F6F2; /* Меню — подчёркивание */
+    /* --- Кнопки --- */
+    --color-btn-secondary-bg: #7680F2; /* Дополнительная кнопка */
+    --color-btn-secondary-bg-hover: #ADB2E2; /*Дополнительная кнопка hover*/
+    --color-btn-primary-text: #FFFFFF; /* Основная Кнопка (текст) */
+    --color-btn-primary-hover: #85A6F5; /* Основная кнопка hover */
+    --color-btn-primary-bg: #054DF4; /* Основная кнопка */
+    /* --- Карточки (дополнительно) --- */
+    --color-card-title: #0B1B2B; /* Карточка — заголовок */
+    --color-card-text: #5A6B7D; /* Карточка — текст */
+    --color-card-hover-bg: #D1F5FF; /* Карточка — hover (обводка/фон) */
+    --color-card-hover-shadow: #0B1B2B; /* Карточка — hover (тень) */
+    /* --- Footer --- */
+    --color-footer-bg: #0B1B2B; /* Footer (фон) */
+    --color-footer-text: #EEF8FF; /* Footer (текст) */
+    --color-footer-link-hover: #34F6F2; /* Footer — ссылки hover */
+    /* --- Поля ввода и прочее --- */
+    --color-input-bg: #FFFFFF; /* Поле ввода (поиск) */
+    /* --- Cheaps (Предположительно Chip/Tag) --- */
+    --color-cheaps-bg: #FFFFFF; /* Cheaps */
+    --color-cheap-bg: #D9D9D9; /* Cheap */
+    --color-cheap-hover: #181819; /* Cheap hover */
+    --color-cheap-text-hover: #FFFFFF; /* Cheap text hover */
+    /* --- Отзывы и чат --- */
+    --color-review-card-bg: #FFFFFF; /* Review card background */
+    --color-chat-stroke: #E5E7EB; /* StrokeColor */
+    --color-chat-buttons: #FFFFFF; /* ChatButtonsColor */
+    /* =========================================
+       ТИПОГРАФИКА (АДАПТИВНАЯ)
+       По умолчанию (Desktop) — самые большие значения.
+       При уменьшении экрана значения переопределяются.
+       ========================================= */
+    /* --- Значения по умолчанию (Desktop) --- */
+    --font-label-large: 24.75px;
+    --font-paragraph: 36px;
+    --font-label: 15.75px;
+    --font-course-theme: 13.5px;
+    --font-card-title: 22.5px;
+    --font-username: 15.75px;
+    --font-review: 11.25px;
+    --font-footer: 11.25px;
+    --font-footer-logo-name: 18px;
+    --font-button-text: 14px;
+    /* --- Дополнительные из макета "Typography" (Mobile) --- */
+    --font-section-title: 28px;
+    --font-page-title-hero: 40px;
+
+    /*Разрешение*/
+    --main_width: 1440px;
+}
+
+/* =========================================
+   ПЛАНШЕТ (Tablet) — экраны до 1024px
+   ========================================= */
+@media (max-width: 1024px) {
+    :root {
+        --font-label-large: 22px;
+        --font-paragraph: 32px;
+        --font-label: 14px;
+        --font-course-theme: 12px;
+        --font-card-title: 20px;
+        --font-username: 14px;
+        --font-review: 10px;
+        --font-footer: 10px;
+        --font-button-text: 10px; /* В планшете не указан, ставим 10 */
+        --font-footer-logo-name: 16px; /* На планшете не указан, можно уменьшить */
+        --main_width: 768px;
+    }
+}
+
+/* =========================================
+   МОБИЛЬНЫЕ (Mobile) — экраны до 767px
+   ========================================= */
+@media (max-width: 767px) {
+    :root {
+        --font-label-large: 11px;
+        --font-paragraph: 16px;
+        --font-card-title: 10px;
+        --font-button-text: 9px;
+        --font-section-title: 28px; /* Из макета Typography */
+        --font-page-title-hero: 40px; /* Из макета Typography */
+        --font-course-theme: 6px;
+        --font-username: 7px;
+        --font-label: 7px;
+        --font-review: 5px;
+        --font-footer: 5px;
+        --font-footer-logo-name: 12px; /* На мобильном не указан, можно уменьшить */
+        --main_width:375px;
+    }
+}
+
+* {
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: var(--color-bg-page);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: var(--main_width);
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+
+.container > header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 73.5px;
+}
+
+.header__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width:451px;
+    height:37px;
+}
+
+button {
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    align-content: center;
+    font-size: var(--font-button-text);
+    font-weight: 600;
+}
+
+
+
+
+.header__buttons button:not(.sign-in_btn) {
+    width: 180px;
+    height: 37px;
+    background: var(--color-btn-secondary-bg);
+    color: var(--color-btn-primary-text);
+}
+
+.header__buttons .sign-in_btn {
+    width: 69px;
+    height: 25px;
+    background: var(--color-btn-primary-bg);
+    color: var(--color-btn-primary-text);
+}
+
+/*Hover*/
+
+.header__buttons button:hover:not(.sign-in_btn) {
+    background: var(--color-btn-secondary-bg-hover);
+}
+
+.header__buttons .sign-in_btn:hover {
+    background: var(--color-btn-primary-hover);
+}
