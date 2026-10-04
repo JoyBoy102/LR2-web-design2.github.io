@@ -1,48 +1,51 @@
 ﻿:root {
     /* --- Основные фоны и текст --- */
-    --color-bg-page: #EEF8FF; /* Фон страницы */
-    --color-bg-card: #FFFFFF; /* Фон карточек */
-    --color-heading: #0B1B2B; /* Заголовки H1-H3 */
-    --color-text-primary: #2A3B4D; /* Обычный текст */
-    --color-text-secondary: #5A6B7D; /* Вторичный текст (подписи) */
-    --color-border-card: #D7E3EE; /* Границы карточек */
+    --color-bg-page: #EEF8FF;
+    --color-bg-card: #FFFFFF;
+    --color-heading: #0B1B2B;
+    --color-text-primary: #2A3B4D;
+    --color-text-secondary: #5A6B7D;
+    --color-border-card: #D7E3EE;
     /* --- Header и Меню --- */
-    --color-header-glass: #EEF8FF; /* Header (фон, стекло) */
-    --color-menu-link: #5A6B7D; /* Меню — обычная ссылка */
-    --color-menu-hover: #7D53DE; /* Меню — активная hover */
-    --color-menu-underline: #34F6F2; /* Меню — подчёркивание */
+    --color-header-glass: #EEF8FF;
+    --color-menu-link: #5A6B7D;
+    --color-menu-hover: #7D53DE;
+    --color-menu-underline: #34F6F2;
     /* --- Кнопки --- */
-    --color-btn-secondary-bg: #7680F2; /* Дополнительная кнопка */
-    --color-btn-secondary-bg-hover: #ADB2E2; /*Дополнительная кнопка hover*/
-    --color-btn-primary-text: #FFFFFF; /* Основная Кнопка (текст) */
-    --color-btn-primary-hover: #85A6F5; /* Основная кнопка hover */
-    --color-btn-primary-bg: #054DF4; /* Основная кнопка */
+    --color-btn-secondary-bg: #7680F2;
+    --color-btn-secondary-bg-hover: #ADB2E2;
+    --color-btn-primary-text: #FFFFFF;
+    --color-btn-primary-hover: #85A6F5;
+    --color-btn-primary-bg: #054DF4;
     /* --- Карточки (дополнительно) --- */
-    --color-card-title: #0B1B2B; /* Карточка — заголовок */
-    --color-card-text: #5A6B7D; /* Карточка — текст */
-    --color-card-hover-bg: #D1F5FF; /* Карточка — hover (обводка/фон) */
-    --color-card-hover-shadow: #0B1B2B; /* Карточка — hover (тень) */
+    --color-card-title: #0B1B2B;
+    --color-card-text: #5A6B7D;
+    --color-card-hover-bg: #D1F5FF;
+    --color-card-hover-shadow: #0B1B2B;
     /* --- Footer --- */
-    --color-footer-bg: #0B1B2B; /* Footer (фон) */
-    --color-footer-text: #EEF8FF; /* Footer (текст) */
-    --color-footer-link-hover: #34F6F2; /* Footer — ссылки hover */
+    --color-footer-bg: #0B1B2B;
+    --color-footer-text: #EEF8FF;
+    --color-footer-link-hover: #34F6F2;
     /* --- Поля ввода и прочее --- */
-    --color-input-bg: #FFFFFF; /* Поле ввода (поиск) */
-    /* --- Cheaps (Предположительно Chip/Tag) --- */
-    --color-cheaps-bg: #FFFFFF; /* Cheaps */
-    --color-cheap-bg: #D9D9D9; /* Cheap */
-    --color-cheap-hover: #181819; /* Cheap hover */
-    --color-cheap-text-hover: #FFFFFF; /* Cheap text hover */
+    --color-input-bg: #FFFFFF;
+    /* --- Chips --- */
+    --color-cheaps-bg: #FFFFFF;
+    --color-cheap-bg: #D9D9D9;
+    --color-cheap-hover: #181819;
+    --color-cheap-text-hover: #FFFFFF;
     /* --- Отзывы и чат --- */
-    --color-review-card-bg: #FFFFFF; /* Review card background */
-    --color-chat-stroke: #E5E7EB; /* StrokeColor */
-    --color-chat-buttons: #FFFFFF; /* ChatButtonsColor */
+    --color-review-card-bg: #FFFFFF;
+    --color-chat-stroke: #E5E7EB;
+    --color-chat-buttons: #FFFFFF;
     /* =========================================
-       ТИПОГРАФИКА (АДАПТИВНАЯ)
-       По умолчанию (Desktop) — самые большие значения.
-       При уменьшении экрана значения переопределяются.
+       МАСШТАБ (относительно desktop 1440px)
        ========================================= */
-    /* --- Значения по умолчанию (Desktop) --- */
+    --scale: 1;
+    --main_width: 1440px;
+    --course-cards-basis: 33.333%;
+    /* =========================================
+       ТИПОГРАФИКА (desktop)
+       ========================================= */
     --font-label-large: 24.75px;
     --font-paragraph: 36px;
     --font-label: 15.75px;
@@ -53,56 +56,68 @@
     --font-footer: 11.25px;
     --font-footer-logo-name: 18px;
     --font-button-text: 14px;
-    /* --- Дополнительные из макета "Typography" (Mobile) --- */
     --font-section-title: 28px;
     --font-page-title-hero: 40px;
-
-    /*Разрешение*/
-    --main_width: 1440px;
 }
 
 /* =========================================
-   ПЛАНШЕТ (Tablet) — экраны до 1024px
+   < 1440px — 0.75 от desktop
    ========================================= */
-@media (max-width: 1024px) {
+@media (max-width: 1440px) {
     :root {
-        --font-label-large: 22px;
-        --font-paragraph: 32px;
-        --font-label: 14px;
-        --font-course-theme: 12px;
-        --font-card-title: 20px;
-        --font-username: 14px;
-        --font-review: 10px;
-        --font-footer: 10px;
-        --font-button-text: 10px; /* В планшете не указан, ставим 10 */
-        --font-footer-logo-name: 16px; /* На планшете не указан, можно уменьшить */
-        --main_width: 768px;
+        --scale: 0.75;
+        --main_width: 1080px;
+        --course-cards-basis: 50%;
+        --font-label-large: 18.56px;
+        --font-paragraph: 27px;
+        --font-label: 11.81px;
+        --font-course-theme: 10.13px;
+        --font-card-title: 16.88px;
+        --font-username: 11.81px;
+        --font-review: 8.44px;
+        --font-footer: 8.44px;
+        --font-footer-logo-name: 13.5px;
+        --font-button-text: 10.5px;
+        --font-section-title: 21px;
+        --font-page-title-hero: 30px;
     }
 }
 
 /* =========================================
-   МОБИЛЬНЫЕ (Mobile) — экраны до 767px
+   < 768px — 0.5 от desktop
    ========================================= */
 @media (max-width: 767px) {
     :root {
-        --font-label-large: 11px;
-        --font-paragraph: 16px;
-        --font-card-title: 10px;
-        --font-button-text: 9px;
-        --font-section-title: 28px; /* Из макета Typography */
-        --font-page-title-hero: 40px; /* Из макета Typography */
-        --font-course-theme: 6px;
-        --font-username: 7px;
-        --font-label: 7px;
-        --font-review: 5px;
-        --font-footer: 5px;
-        --font-footer-logo-name: 12px; /* На мобильном не указан, можно уменьшить */
-        --main_width:375px;
+        --scale: 0.5;
+        --main_width: 720px;
+        --course-cards-basis: 50%;
+        --font-label-large: 12.38px;
+        --font-paragraph: 18px;
+        --font-label: 7.88px;
+        --font-course-theme: 6.75px;
+        --font-card-title: 11.25px;
+        --font-username: 7.88px;
+        --font-review: 5.63px;
+        --font-footer: 5.63px;
+        --font-footer-logo-name: 9px;
+        --font-button-text: 7px;
+        --font-section-title: 14px;
+        --font-page-title-hero: 20px;
     }
 }
 
-* {
+/* =========================================
+   БАЗА
+   ========================================= */
+html {
+    box-sizing: border-box;
+}
+
+*,
+::before,
+::after {
     font-family: 'Inter', sans-serif;
+    box-sizing: inherit;
 }
 
 body {
@@ -111,66 +126,421 @@ body {
     padding: 0;
 }
 
-.container {
-    max-width: var(--main_width);
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 20px;
-    box-sizing: border-box;
-}
-
-
-.container > header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 73.5px;
-}
-
-.header__buttons {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width:451px;
-    height:37px;
-}
-
 button {
-    border-radius: 12px;
+    border-radius: calc(12px * var(--scale));
     border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
-    align-content: center;
+    gap: calc(5px * var(--scale));
     font-size: var(--font-button-text);
     font-weight: 600;
 }
 
-
-
-
-.header__buttons button:not(.sign-in_btn) {
-    width: 180px;
-    height: 37px;
-    background: var(--color-btn-secondary-bg);
-    color: var(--color-btn-primary-text);
+h1 {
+    font-size: var(--font-paragraph);
+    font-weight: 700;
+    margin: 0;
 }
 
-.header__buttons .sign-in_btn {
-    width: 69px;
-    height: 25px;
-    background: var(--color-btn-primary-bg);
-    color: var(--color-btn-primary-text);
+h2 {
+    font-size: var(--font-label-large);
+    font-weight: 400;
+    color: var(--color-text-secondary);
+    margin: 0;
 }
 
-/*Hover*/
+/* =========================================
+   LAYOUT
+   ========================================= */
+.container {
+    width: 100%;
+    max-width: var(--main_width);
+    margin: 0 auto;
+    padding: calc(4px * var(--scale)) calc(20px * var(--scale));
+    display: flex;
+    flex-direction: column;
+    gap: calc(20px * var(--scale));
+}
 
+    .container > main {
+        display: flex;
+        flex-direction: column;
+        gap: calc(20px * var(--scale));
+    }
+
+    .container > header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        min-height: calc(73.5px * var(--scale));
+    }
+
+/* =========================================
+   HEADER BUTTONS
+   ========================================= */
+.header__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: calc(451px * var(--scale));
+    min-height: calc(37px * var(--scale));
+}
+
+    .header__buttons button:not(.sign-in_btn) {
+        width: 100%;
+        max-width: calc(180px * var(--scale));
+        height: calc(37px * var(--scale));
+        background: var(--color-btn-secondary-bg);
+        color: var(--color-btn-primary-text);
+    }
+
+    .header__buttons .sign-in_btn {
+        width: 100%;
+        max-width: calc(69px * var(--scale));
+        height: calc(25px * var(--scale));
+        background: var(--color-btn-primary-bg);
+        color: var(--color-btn-primary-text);
+    }
+
+    .header__buttons svg {
+        width: 100%;
+        max-width: calc(37px * var(--scale));
+        height: calc(37px * var(--scale));
+    }
+
+/* =========================================
+   BANNER (HERO)
+   ========================================= */
+.banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: calc(20px * var(--scale));
+}
+
+.banner__text {
+    width: 100%;
+    max-width: calc(589px * var(--scale));
+    min-height: calc(428px * var(--scale));
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: calc(10px * var(--scale));
+}
+
+.banner__img {
+    width: 100%;
+    max-width: calc(819px * var(--scale));
+    height: calc(428px * var(--scale));
+    object-fit: cover;
+    border-radius: calc(12px * var(--scale));
+}
+
+/* =========================================
+   SEARCH
+   ========================================= */
+.search__container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: calc(12px * var(--scale));
+    border-radius: calc(12px * var(--scale));
+    background: var(--color-bg-card);
+    width: 100%;
+    max-width: calc(794px * var(--scale));
+    height: calc(45px * var(--scale));
+}
+
+    .search > input {
+        background: var(--color-bg-card);
+        border: none;
+        outline: none;
+        flex-grow: 1;
+        font-size: calc(16px * var(--scale));
+        color: var(--color-text-primary);
+    }
+
+    .search > button {
+        background: none;
+        border: none;
+        outline: none;
+        padding: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .search svg {
+        width: 100%;
+        max-width: calc(48px * var(--scale));
+        height: calc(45px * var(--scale));
+    }
+
+/* =========================================
+   COURSES
+   ========================================= */
+
+.popular-courses {
+    display: flex;
+    flex-direction: column;
+    gap: calc(20px * var(--scale));
+}
+
+.popular-courses__cheaps {
+    max-width: calc(1408px * var(--scale));
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    padding: calc(12px * var(--scale));
+    flex-wrap: wrap;
+    gap: calc(4px * var(--scale));
+    background: var(--color-cheaps-bg);
+    border-radius: calc(12px * var(--scale));
+}
+
+    /*Настройка поведения flex в cheaps*/
+    .popular-courses__cheaps > * {
+        flex: 1 1 calc(5% - calc(4px * var(--scale)));
+        min-width: max-content;
+        text-align: center;
+        white-space: nowrap;
+        min-height: calc(43px * var(--scale));
+    }
+
+    .popular-courses__cheaps > button {
+        background: var(--color-cheap-bg);
+        color: var(--color-text-primary);
+        padding: calc(6px * var(--scale));
+    }
+
+/* =========================================
+   COURSE-CARDS
+   ========================================= */
+
+.course-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(11px * var(--scale)) calc(21px * var(--scale));
+}
+
+.course-card {
+    flex: 1 1 calc(var(--course-cards-basis) - calc(21px * var(--scale)));
+    min-width: max-content;
+    width: 100%;
+    box-sizing: border-box;
+    height: calc(229px * var(--scale));
+    display: flex;
+    gap: calc(12px * var(--scale));
+    background: var(--color-bg-card);
+    border-radius: calc(12px * var(--scale));
+    padding: calc(12px * var(--scale));
+    align-items: center;
+}
+
+    .course-card svg {
+        width: 100%;
+        max-width: calc(126px * var(--scale));
+    }
+
+.course-card__text {
+    display: flex;
+    flex-direction: column;
+    grid-row-gap: calc(2px * var(--scale));
+    height: 100%;
+    max-height: calc(138px * var(--scale));
+    width: 100%;
+    max-width: calc(301px * var(--scale));
+}
+
+    .course-card__text > :nth-child(1) {
+        font-size: var(--font-card-title);
+        font-weight: 600;
+        color: var(--color-card-title);
+    }
+
+    .course-card__text > :nth-child(2) {
+        font-size: var(--font-label);
+        font-weight: 400;
+        color: var(--color-card-text);
+    }
+
+/* =========================================
+   REVIEWS
+   ========================================= */
+
+.reviews {
+    display: flex;
+    gap: calc(20px * var(--scale));
+    justify-content: center;
+    align-items: center;
+    max-height: calc(663px * var(--scale));
+    height: calc(663px * var(--scale));
+}
+
+.review {
+    display: flex;
+    flex-direction: column;
+    gap: calc(4px * var(--scale));
+    background: var(--color-review-card-bg);
+    border-radius: calc(12px * var(--scale));
+    padding: calc(7px * var(--scale));
+    max-width: calc(437px * var(--scale));
+    width: 100%;
+    max-height: calc(663px * var(--scale));
+    height: calc(663px * var(--scale));
+}
+
+.review-text {
+    text-align: center;
+}
+
+.avatar-nick-stars {
+    display: flex;
+    gap: calc(5px * var(--scale));
+}
+
+.nick-stars {
+    display: flex;
+    flex-direction: column;
+    gap: calc(2px * var(--scale));
+    justify-content: center;
+}
+
+.course-avatar-name {
+    display: flex;
+    gap: calc(5px * var(--scale));
+    align-items: center;
+}
+
+.avatar-nick-stars > svg {
+    width: 100%;
+    max-width: calc(57px * var(--scale));
+    height: 100%;
+    max-height: calc(57px * var(--scale));
+}
+
+.course-avatar-name > svg {
+    width: 100%;
+    max-width: calc(57px * var(--scale));
+    height: 100%;
+    max-height: calc(57px * var(--scale));
+}
+
+.nick-stars > span {
+    font-size: var(--font-label);
+    font-weight: 600;
+}
+
+.course-avatar-name > span {
+    font-size: var(--font-label);
+    font-weight: 600;
+}
+
+.review-text {
+    font-size: var(--font-review);
+    font-weight: 600;
+}
+
+.reviews > svg {
+    cursor: pointer;
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    background: var(--color-footer-bg);
+    width: 100%;
+    color: var(--color-footer-text);
+    height: calc(239px * var(--scale));
+    align-items: center;
+    padding: calc(12px * var(--scale));
+}
+
+.footer-first-part {
+    display: flex;
+    flex-direction: column;
+    gap: calc(4px * var(--scale));
+    width: calc(140px * var(--scale));
+    align-items: center;
+}
+
+    .footer-first-part > :nth-child(1) {
+        text-align: center;
+        width: calc(140px * var(--scale));
+        font-size: var(--font-footer);
+    }
+
+    .footer-first-part > :nth-child(2) {
+        text-align: center;
+        width: calc(140px * var(--scale));
+        font-size: var(--font-footer);
+    }
+
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(4px * var(--scale));
+}
+
+    .footer-logo > span {
+        font-size: var(--font-footer-logo-name);
+        font-weight: 600;
+    }
+
+.contacts-block {
+    display: flex;
+    flex-direction: column;
+    gap: calc(10px * var(--scale));
+    font-size: var(--font-footer);
+}
+
+.our-contacts-logo {
+    display: flex;
+    align-items: center;
+    gap: calc(4px * var(--scale));
+}
+
+.contacts {
+    display: flex;
+    flex-direction: column;
+    gap: calc(8px * var(--scale));
+    color: var(--color-footer-link-hover);
+}
+
+.contacts span {
+    cursor: pointer;
+}
+
+/* =========================================
+HOVER
+========================================= */
 .header__buttons button:hover:not(.sign-in_btn) {
     background: var(--color-btn-secondary-bg-hover);
 }
 
 .header__buttons .sign-in_btn:hover {
     background: var(--color-btn-primary-hover);
+}
+
+.popular-courses__cheaps button:hover {
+    background: var(--color-cheap-hover);
+    color: var(--color-cheap-text-hover);
 }
