@@ -1,4 +1,8 @@
-﻿:root {
+﻿/* =========================================
+   ПЕРЕМЕННЫЕ ТЕМЫ (дизайн-токены)
+   ========================================= */
+
+:root {
     /* --- Основные фоны и текст --- */
     --color-bg-page: #EEF8FF;
     --color-bg-card: #FFFFFF;
@@ -70,13 +74,15 @@
 }
 
 /* =========================================
-   < 1440px — 0.75 от desktop
+   АДАПТИВ: < 1440px — 0.75 от desktop
    ========================================= */
+
 @media (max-width: 1440px) {
     :root {
         --scale: 0.75;
         --main_width: 1080px;
         --course-cards-basis: 50%;
+        /* --- Типографика (tablet) --- */
         --font-label-large: 18.56px;
         --font-paragraph: 27px;
         --font-label: 11.81px;
@@ -89,9 +95,7 @@
         --font-button-text: 10.5px;
         --font-section-title: 21px;
         --font-page-title-hero: 30px;
-        /* =========================================
-           AI (Tablet < 1440px)
-           ========================================= */
+        /* --- AI (Tablet < 1440px) --- */
         --ai-logo: 20px;
         --ai-chat-name: 16px;
         --ai-new-chat-btn-text: 18px;
@@ -102,13 +106,15 @@
 }
 
 /* =========================================
-   < 768px — 0.5 от desktop
+   АДАПТИВ: < 768px — 0.5 от desktop
    ========================================= */
+
 @media (max-width: 767px) {
     :root {
         --scale: 0.5;
         --main_width: 720px;
         --course-cards-basis: 50%;
+        /* --- Типографика (mobile) --- */
         --font-label-large: 12.38px;
         --font-paragraph: 18px;
         --font-label: 7.88px;
@@ -121,11 +127,7 @@
         --font-button-text: 7px;
         --font-section-title: 14px;
         --font-page-title-hero: 20px;
-        /* =========================================
-           AI (Mobile < 768px)
-           Значения не указаны на скрине, 
-           рассчитываем как 0.5 от Desktop
-           ========================================= */
+        /* --- AI (Mobile < 768px) --- */
         --ai-logo: 11px;
         --ai-chat-name: 9px;
         --ai-new-chat-btn-text: 10px;
@@ -136,8 +138,10 @@
 }
 
 /* =========================================
-   БАЗА
+   БАЗА (reset + общие настройки)
    ========================================= */
+
+/* --- Корневой box-model --- */
 html {
     box-sizing: border-box;
     height: 100%;
@@ -151,6 +155,7 @@ html {
     box-sizing: inherit;
 }
 
+/* --- Страница --- */
 body {
     background: var(--color-bg-page);
     margin: 0;
@@ -159,12 +164,15 @@ body {
     overflow: hidden;
 }
 
+/* --- Header --- */
 header {
-    display: flex;
+    display: none; /* показывается только при свёрнутом sidebar */
     justify-content: flex-start;
-    gap: 10px;
+    align-items: center;
+    gap: calc(10px * var(--scale));
 }
 
+/* --- Базовая кнопка --- */
 button {
     border-radius: calc(12px * var(--scale));
     border: none;
@@ -177,9 +185,24 @@ button {
     font-weight: 600;
 }
 
+/* --- Центральная область --- */
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    gap: calc(25px * var(--scale));
+}
+
+/* =========================================
+   КОМПОНОВКА СТРАНИЦЫ
+   ========================================= */
+
+/* --- Корневой контейнер (sidebar + main) --- */
 .container {
     width: 100%;
-    max-width: 1920px;
+    max-width: calc(1920px * var(--scale));
     margin: 0 auto;
     display: flex;
     flex-direction: row;
@@ -187,163 +210,177 @@ button {
     height: 100%;
 }
 
+/* --- Правая часть (header + main) --- */
 .container-main {
     width: 100%;
-    max-width: 1920px;
+    max-width: calc(1920px * var(--scale));
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: calc(20px * var(--scale));
     height: 100%;
+    padding: calc(10px * var(--scale));
 }
+
+/* =========================================
+   HEADER: КНОПКИ УПРАВЛЕНИЯ
+   ========================================= */
 
 .header__buttons {
     display: flex;
     justify-content: flex-start;
-    padding: 4px 12px;
-    gap: 8px;
-    background: var(--color-bg-card);
-    border-radius: 12px;
-    max-width: calc(73px * var(--scale));
+    gap: calc(8px * var(--scale));
+    border-radius: calc(12px * var(--scale));
+}
+
+    .header__buttons button {
+        background: var(--color-bg-page);
+        padding: 0;
+        margin: 0;
+    }
+
+/* =========================================
+   ОБЩИЕ ИКОНКИ
+   ========================================= */
+
+svg {
+    max-width: calc(25px * var(--scale));
     width: 100%;
+    height: calc(25px * var(--scale));
 }
 
-.header__buttons button {
-    background: var(--color-bg-card);
-    padding: 0;
-    margin: 0;
-}
+/* =========================================
+   ГЛАВНЫЙ ЭКРАН (main)
+   ========================================= */
 
-.header__buttons svg {
-    width: calc(20px * var(--scale));
-    height: calc(20px * var(--scale));
-}
-
-header > svg {
-    max-width: calc(37px * var(--scale));
-    width: 100%;
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
-    gap: 25px;
-}
-
+/* --- Логотип + подпись --- */
 .main-logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: calc(10px * var(--scale));
     font-size: var(--ai-logo);
     font-weight: 600;
 }
 
+/* --- Блок ввода --- */
 .input-block {
     display: flex;
     flex-direction: column;
     background: var(--color-bg-card);
-    border-radius: 12px;
-    padding: 10px;
+    border-radius: calc(12px * var(--scale));
+    padding: calc(10px * var(--scale));
     width: calc(844px * var(--scale));
-    gap: 10px;
+    gap: calc(10px * var(--scale));
 }
 
-.input-block input {
-    border: none;
-    outline: none;
-}
+    .input-block input {
+        border: none;
+        outline: none;
+    }
 
+        .input-block input::placeholder {
+            color: var(--color-text-secondary);
+            font-size: var(--placeholder);
+            font-weight: 400;
+        }
+
+/* --- Кнопки под полем ввода --- */
 .input-block-buttons {
     display: flex;
     justify-content: space-between;
 }
 
-.input-block-buttons button {
-    background: var(--color-bg-card);
-}
+    .input-block-buttons button {
+        background: var(--color-bg-card);
+    }
 
-.input-block-buttons > :nth-child(1) {
-    border: 1px solid var(--color-chat-stroke); /* Заменяем stroke на border */
-}
+    .input-block-buttons > :nth-child(1) {
+        border: 1px solid var(--color-chat-stroke);
+    }
 
-.input-block input::placeholder {
-    color: var(--color-text-secondary);
-    font-size: var(--placeholder);
-    font-weight: 400;
-}
+/* =========================================
+   SIDEBAR (список чатов)
+   ========================================= */
 
+/* --- Контейнер sidebar --- */
 .chats-side-bar {
     background: var(--color-bg-card);
     max-width: calc(352px * var(--scale));
     width: 100%;
-    display: none;
+    display: flex;
     flex-direction: column;
     height: 100%;
-    padding: 8px;
+    padding: calc(10px * var(--scale));
     overflow: hidden;
-    gap: 20px;
+    gap: calc(20px * var(--scale));
 }
 
+/* --- Свёрнутое состояние: sidebar скрыт, header показан --- */
 .container.sidebar-collapsed .chats-side-bar {
+    display: none;
+}
+
+.container.sidebar-collapsed .container-main > header {
     display: flex;
 }
 
-.container.sidebar-collapsed > header {
-    display: none;
-}
-
-
+/* --- Список чатов (скроллится) --- */
 .chats {
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: calc(10px * var(--scale));
 }
 
+/* --- Верхний блок sidebar: кнопки --- */
 .side-bar-buttons {
     display: flex;
-    flex-direction:column;
-    gap: 10px;
+    flex-direction: column;
+    gap: calc(40px * var(--scale));
 }
 
+/* --- Первая строка: лого + кнопки --- */
 .first-block-buttons {
-    display:flex;
-    justify-content:space-between;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
+/* --- Логотип с названием --- */
 .logo-block {
     display: flex;
-    gap: 10px;
+    gap: calc(10px * var(--scale));
     align-items: center;
 }
 
-.logo-block h1 {
-    margin: 0;
-    font-weight:600;
-    font-size: var(--ai-logo);
-}
+    .logo-block h1 {
+        margin: 0;
+        font-weight: 600;
+        font-size: var(--ai-logo);
+        text-align: center;
+        line-height: 1;
+    }
 
+/* --- Кнопки в шапке sidebar --- */
 .buttons-block {
     display: flex;
-    gap: 14px;
+    gap: calc(8px * var(--scale));
     align-items: center;
 }
 
-.buttons-block button {
-    background: var(--color-bg-card);
-}
+    .buttons-block button {
+        background: var(--color-bg-card);
+        padding: 0px;
+    }
 
+/* --- Кнопка «Новый чат» --- */
 .new-chat-button-block {
     display: flex;
     justify-content: center;
 }
 
 .new-chat-button {
-    gap: 5px;
+    gap: calc(5px * var(--scale));
     max-width: calc(151px * var(--scale));
     width: 100%;
     padding: 0;
@@ -351,30 +388,32 @@ main {
     background: var(--color-bg-card);
 }
 
-.new-chat-button h2 {
-    font-size: var(--ai-new-chat-btn-text);
-    color: var(--color-text-secondary);
-    font-weight: 600;
-    padding: 0;
-    margin: 0;
-}
+    .new-chat-button h2 {
+        font-size: var(--ai-new-chat-btn-text);
+        color: var(--color-text-secondary);
+        font-weight: 600;
+        padding: 0;
+        margin: 0;
+    }
 
+/* --- Группа чатов (по датам) --- */
 .chat-block {
     display: flex;
-    flex-direction:column;
-    gap: 10px;
-    padding: 0px 4px;
+    flex-direction: column;
+    gap: calc(10px * var(--scale));
+    padding: 0 calc(4px * var(--scale));
 }
 
+/* --- Дата группы --- */
 .date {
     font-size: var(--ai-chat-date);
     font-weight: 400;
     color: var(--color-text-secondary);
 }
 
+/* --- Название чата --- */
 .chat-theme {
     font-size: var(--ai-chat-name);
-    font-weight:400;
-    color: var(--color-text-primary)
+    font-weight: 400;
+    color: var(--color-text-primary);
 }
-
