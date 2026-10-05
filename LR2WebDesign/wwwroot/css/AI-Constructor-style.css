@@ -1,0 +1,380 @@
+﻿:root {
+    /* --- Основные фоны и текст --- */
+    --color-bg-page: #EEF8FF;
+    --color-bg-card: #FFFFFF;
+    --color-heading: #0B1B2B;
+    --color-text-primary: #2A3B4D;
+    --color-text-secondary: #5A6B7D;
+    --color-border-card: #D7E3EE;
+    /* --- Header и Меню --- */
+    --color-header-glass: #EEF8FF;
+    --color-menu-link: #5A6B7D;
+    --color-menu-hover: #7D53DE;
+    --color-menu-underline: #34F6F2;
+    /* --- Кнопки --- */
+    --color-btn-secondary-bg: #7680F2;
+    --color-btn-secondary-bg-hover: #ADB2E2;
+    --color-btn-primary-text: #FFFFFF;
+    --color-btn-primary-hover: #85A6F5;
+    --color-btn-primary-bg: #054DF4;
+    /* --- Карточки (дополнительно) --- */
+    --color-card-title: #0B1B2B;
+    --color-card-text: #5A6B7D;
+    --color-card-hover-bg: #D1F5FF;
+    --color-card-hover-shadow: #0B1B2B;
+    /* --- Footer --- */
+    --color-footer-bg: #0B1B2B;
+    --color-footer-text: #EEF8FF;
+    --color-footer-link-hover: #34F6F2;
+    /* --- Поля ввода и прочее --- */
+    --color-input-bg: #FFFFFF;
+    /* --- Chips --- */
+    --color-cheaps-bg: #FFFFFF;
+    --color-cheap-bg: #D9D9D9;
+    --color-cheap-hover: #181819;
+    --color-cheap-text-hover: #FFFFFF;
+    /* --- Отзывы и чат --- */
+    --color-review-card-bg: #FFFFFF;
+    --color-chat-stroke: #E5E7EB;
+    --color-chat-buttons: #FFFFFF;
+    /* =========================================
+       МАСШТАБ (относительно desktop 1440px)
+       ========================================= */
+    --scale: 1;
+    --main_width: 1440px;
+    --course-cards-basis: 33.333%;
+    /* =========================================
+       ТИПОГРАФИКА (desktop)
+       ========================================= */
+    --font-label-large: 24.75px;
+    --font-paragraph: 36px;
+    --font-label: 15.75px;
+    --font-course-theme: 13.5px;
+    --font-card-title: 22.5px;
+    --font-username: 15.75px;
+    --font-review: 11.25px;
+    --font-footer: 11.25px;
+    --font-footer-logo-name: 18px;
+    --font-button-text: 14px;
+    --font-section-title: 28px;
+    --font-page-title-hero: 40px;
+    /* =========================================
+       AI (Desktop 1440px)
+       ========================================= */
+    --ai-chat-name: 18px;
+    --ai-logo: 22px;
+    --ai-new-chat-btn-text: 20px;
+    --ai-chat-date: 15px;
+    --placeholder: 14px;
+    --ai-buttons-text: 13px;
+}
+
+/* =========================================
+   < 1440px — 0.75 от desktop
+   ========================================= */
+@media (max-width: 1440px) {
+    :root {
+        --scale: 0.75;
+        --main_width: 1080px;
+        --course-cards-basis: 50%;
+        --font-label-large: 18.56px;
+        --font-paragraph: 27px;
+        --font-label: 11.81px;
+        --font-course-theme: 10.13px;
+        --font-card-title: 16.88px;
+        --font-username: 11.81px;
+        --font-review: 8.44px;
+        --font-footer: 8.44px;
+        --font-footer-logo-name: 13.5px;
+        --font-button-text: 10.5px;
+        --font-section-title: 21px;
+        --font-page-title-hero: 30px;
+        /* =========================================
+           AI (Tablet < 1440px)
+           ========================================= */
+        --ai-logo: 20px;
+        --ai-chat-name: 16px;
+        --ai-new-chat-btn-text: 18px;
+        --ai-chat-date: 13px;
+        --ai-chat: 16px;
+        --ai-buttons-text: 11px;
+    }
+}
+
+/* =========================================
+   < 768px — 0.5 от desktop
+   ========================================= */
+@media (max-width: 767px) {
+    :root {
+        --scale: 0.5;
+        --main_width: 720px;
+        --course-cards-basis: 50%;
+        --font-label-large: 12.38px;
+        --font-paragraph: 18px;
+        --font-label: 7.88px;
+        --font-course-theme: 6.75px;
+        --font-card-title: 11.25px;
+        --font-username: 7.88px;
+        --font-review: 5.63px;
+        --font-footer: 5.63px;
+        --font-footer-logo-name: 9px;
+        --font-button-text: 7px;
+        --font-section-title: 14px;
+        --font-page-title-hero: 20px;
+        /* =========================================
+           AI (Mobile < 768px)
+           Значения не указаны на скрине, 
+           рассчитываем как 0.5 от Desktop
+           ========================================= */
+        --ai-logo: 11px;
+        --ai-chat-name: 9px;
+        --ai-new-chat-btn-text: 10px;
+        --ai-chat-date: 7.5px;
+        --ai-chat: 9px;
+        --ai-buttons-text: 6.5px;
+    }
+}
+
+/* =========================================
+   БАЗА
+   ========================================= */
+html {
+    box-sizing: border-box;
+    height: 100%;
+    margin: 0;
+}
+
+*,
+::before,
+::after {
+    font-family: 'Inter', sans-serif;
+    box-sizing: inherit;
+}
+
+body {
+    background: var(--color-bg-page);
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+header {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+button {
+    border-radius: calc(12px * var(--scale));
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(5px * var(--scale));
+    font-size: var(--font-button-text);
+    font-weight: 600;
+}
+
+.container {
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    gap: calc(20px * var(--scale));
+    height: 100%;
+}
+
+.container-main {
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: calc(20px * var(--scale));
+    height: 100%;
+}
+
+.header__buttons {
+    display: flex;
+    justify-content: flex-start;
+    padding: 4px 12px;
+    gap: 8px;
+    background: var(--color-bg-card);
+    border-radius: 12px;
+    max-width: calc(73px * var(--scale));
+    width: 100%;
+}
+
+.header__buttons button {
+    background: var(--color-bg-card);
+    padding: 0;
+    margin: 0;
+}
+
+.header__buttons svg {
+    width: calc(20px * var(--scale));
+    height: calc(20px * var(--scale));
+}
+
+header > svg {
+    max-width: calc(37px * var(--scale));
+    width: 100%;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    gap: 25px;
+}
+
+.main-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: var(--ai-logo);
+    font-weight: 600;
+}
+
+.input-block {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-bg-card);
+    border-radius: 12px;
+    padding: 10px;
+    width: calc(844px * var(--scale));
+    gap: 10px;
+}
+
+.input-block input {
+    border: none;
+    outline: none;
+}
+
+.input-block-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-block-buttons button {
+    background: var(--color-bg-card);
+}
+
+.input-block-buttons > :nth-child(1) {
+    border: 1px solid var(--color-chat-stroke); /* Заменяем stroke на border */
+}
+
+.input-block input::placeholder {
+    color: var(--color-text-secondary);
+    font-size: var(--placeholder);
+    font-weight: 400;
+}
+
+.chats-side-bar {
+    background: var(--color-bg-card);
+    max-width: calc(352px * var(--scale));
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    height: 100%;
+    padding: 8px;
+    overflow: hidden;
+    gap: 20px;
+}
+
+.container.sidebar-collapsed .chats-side-bar {
+    display: flex;
+}
+
+.container.sidebar-collapsed > header {
+    display: none;
+}
+
+
+.chats {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.side-bar-buttons {
+    display: flex;
+    flex-direction:column;
+    gap: 10px;
+}
+
+.first-block-buttons {
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.logo-block {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.logo-block h1 {
+    margin: 0;
+    font-weight:600;
+    font-size: var(--ai-logo);
+}
+
+.buttons-block {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+}
+
+.buttons-block button {
+    background: var(--color-bg-card);
+}
+
+.new-chat-button-block {
+    display: flex;
+    justify-content: center;
+}
+
+.new-chat-button {
+    gap: 5px;
+    max-width: calc(151px * var(--scale));
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background: var(--color-bg-card);
+}
+
+.new-chat-button h2 {
+    font-size: var(--ai-new-chat-btn-text);
+    color: var(--color-text-secondary);
+    font-weight: 600;
+    padding: 0;
+    margin: 0;
+}
+
+.chat-block {
+    display: flex;
+    flex-direction:column;
+    gap: 10px;
+    padding: 0px 4px;
+}
+
+.date {
+    font-size: var(--ai-chat-date);
+    font-weight: 400;
+    color: var(--color-text-secondary);
+}
+
+.chat-theme {
+    font-size: var(--ai-chat-name);
+    font-weight:400;
+    color: var(--color-text-primary)
+}
+
