@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html data-theme="light">
 <head>
     <meta charset="utf-8" />
     <title></title>
@@ -21,6 +21,20 @@
             </svg>
 
             <div class="header__buttons">
+
+                <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему" type="button">
+                    <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.5" />
+                        <path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.93 4.93l1.77 1.77M17.3 17.3l1.77 1.77M4.93 19.07l1.77-1.77M17.3 6.7l1.77-1.77"
+                              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                    </svg>
+
+                    <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11Z"
+                              stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                    </svg>
+                </button>
+
                 <button class="ai-constructor-btn">
                     <svg viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M31.3768 21.2804L27.4687 19.0234C25.968 18.1568 24.7219 16.9106 23.8554 15.4099C22.9889 13.9092 22.5326 12.207 22.5323 10.4741V5.95854C22.5323 4.88933 22.1075 3.86392 21.3515 3.10787C20.5954 2.35183 19.57 1.92708 18.5008 1.92708C17.4316 1.92708 16.4062 2.35183 15.6501 3.10787C14.8941 3.86392 14.4694 4.88933 14.4694 5.95854V10.4725C14.4694 13.9999 12.5885 17.259 9.53371 19.0226L5.62327 21.2796C4.70893 21.82 4.04479 22.6994 3.77515 23.7267C3.50552 24.754 3.65217 25.8463 4.18325 26.766C4.71433 27.6858 5.58692 28.3589 6.61143 28.639C7.63593 28.919 8.72958 28.7835 9.65473 28.2618L13.5644 26.0048C15.0652 25.1386 16.7676 24.6826 18.5004 24.6826C20.2333 24.6826 21.9356 25.1386 23.4365 26.0048L27.3461 28.2618C28.2713 28.7835 29.3649 28.919 30.3894 28.639C31.4139 28.3589 32.2865 27.6858 32.8176 26.766C33.3487 25.8463 33.4953 24.754 33.2257 23.7267C32.9561 22.6994 32.2919 21.82 31.3776 21.2796L31.3768 21.2804Z" stroke="black" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -42,6 +56,8 @@
                 <button class="sign-in_btn">Войти</button>
 
             </div>
+
+
         </header>
         <main>
             <section class="banner">
@@ -100,7 +116,7 @@
                     <button>Архитектура ПО</button>
                 </div>
 
-                <div class="course-cards">
+                <div class="course-cards reveal">
                     <div class="course-card">
                         <svg viewBox="0 0 126 138" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect width="126" height="138" fill="#D9D9D9" />
@@ -169,8 +185,8 @@
                 </div>
             </section>
 
-            <section class="reviews">
-                <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <section class="reviews reveal">
+                <svg class="arrow" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9.58187 18.17L2 10.585L9.58187 3M2 10.585H19.33" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
 
@@ -260,7 +276,7 @@
 
                 </div>
 
-                <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="arrow" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4.33325 13H21.6666M14.0833 20.5833L21.6666 13L14.0833 5.41663" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </section>

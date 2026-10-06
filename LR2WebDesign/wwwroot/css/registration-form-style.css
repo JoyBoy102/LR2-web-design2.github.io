@@ -1,0 +1,264 @@
+﻿/* =========================================
+   ПЕРЕМЕННЫЕ ТЕМЫ (дизайн-токены)
+   ========================================= */
+
+:root {
+    /* --- Основные фоны и текст --- */
+    --color-bg-page: #EEF8FF;
+    --color-bg-card: #FFFFFF;
+    --color-heading: #0B1B2B;
+    --color-text-primary: #2A3B4D;
+    --color-text-secondary: #5A6B7D;
+    --color-border-card: #D7E3EE;
+    /* --- Header и Меню --- */
+    --color-header-glass: #EEF8FF;
+    --color-menu-link: #5A6B7D;
+    --color-menu-hover: #7D53DE;
+    --color-menu-underline: #34F6F2;
+    /* --- Кнопки --- */
+    --color-btn-secondary-bg: #7680F2;
+    --color-btn-secondary-bg-hover: #ADB2E2;
+    --color-btn-primary-text: #FFFFFF;
+    --color-btn-primary-hover: #85A6F5;
+    --color-btn-primary-bg: #054DF4;
+    /* --- Карточки (дополнительно) --- */
+    --color-card-title: #0B1B2B;
+    --color-card-text: #5A6B7D;
+    --color-card-hover-bg: #D1F5FF;
+    --color-card-hover-shadow: #0B1B2B;
+    /* --- Footer --- */
+    --color-footer-bg: #0B1B2B;
+    --color-footer-text: #EEF8FF;
+    --color-footer-link-hover: #34F6F2;
+    /* --- Поля ввода и прочее --- */
+    --color-input-bg: #FFFFFF;
+    /* --- Chips --- */
+    --color-cheaps-bg: #FFFFFF;
+    --color-cheap-bg: #D9D9D9;
+    --color-cheap-hover: #181819;
+    --color-cheap-text-hover: #FFFFFF;
+    /* --- Отзывы и чат --- */
+    --color-review-card-bg: #FFFFFF;
+    --color-chat-stroke: #E5E7EB;
+    --color-chat-buttons: #FFFFFF;
+    /* =========================================
+       МАСШТАБ (относительно desktop 1440px)
+       ========================================= */
+    --scale: 1;
+    --main_width: 1440px;
+    --course-cards-basis: 33.333%;
+    /* =========================================
+       ТИПОГРАФИКА (desktop)
+       ========================================= */
+    --font-label-large: 24.75px;
+    --font-paragraph: 36px;
+    --font-label: 15.75px;
+    --font-course-theme: 13.5px;
+    --font-card-title: 22.5px;
+    --font-username: 15.75px;
+    --font-review: 11.25px;
+    --font-footer: 11.25px;
+    --font-footer-logo-name: 18px;
+    --font-button-text: 14px;
+    --font-section-title: 28px;
+    --font-page-title-hero: 40px;
+    /* =========================================
+       AI (Desktop 1440px)
+       ========================================= */
+    --ai-chat-name: 18px;
+    --ai-logo: 22px;
+    --ai-new-chat-btn-text: 20px;
+    --ai-chat-date: 15px;
+    --placeholder: 14px;
+    --ai-buttons-text: 13px;
+}
+
+[data-theme="dark"] {
+    /* --- Основные фоны и текст --- */
+    --color-bg-page: #0A1420;
+    --color-bg-card: #142436;
+    --color-heading: #EEF8FF;
+    --color-text-primary: #C7D5E5;
+    --color-text-secondary: #8A9BAD;
+    --color-border-card: #2A3B4D;
+    /* --- Header и Меню --- */
+    --color-header-glass: rgba(10, 20, 32, 0.85);
+    --color-menu-link: #A8B8C8;
+    --color-menu-hover: #A78BFA;
+    --color-menu-underline: #34F6F2;
+    /* --- Кнопки --- */
+    --color-btn-secondary-bg: #5A64D9;
+    --color-btn-secondary-bg-hover: #7680F2;
+    --color-btn-primary-text: #FFFFFF;
+    --color-btn-primary-hover: #3A73E8;
+    --color-btn-primary-bg: #1A5FF5;
+    /* --- Карточки --- */
+    --color-card-title: #EEF8FF;
+    --color-card-text: #A8B8C8;
+    --color-card-hover-bg: #1A2F45;
+    --color-card-hover-shadow: #000000;
+    /* --- Footer --- */
+    --color-footer-bg: #050E18;
+    --color-footer-text: #EEF8FF;
+    --color-footer-link-hover: #34F6F2;
+    /* --- Поля ввода --- */
+    --color-input-bg: #1A2A3A;
+    /* --- Chips --- */
+    --color-cheaps-bg: #1A2A3A;
+    --color-cheap-bg: #2A3B4D;
+    --color-cheap-hover: #EEF8FF;
+    --color-cheap-text-hover: #0B1B2B;
+    /* --- Отзывы и чат --- */
+    --color-review-card-bg: #142436;
+    --color-chat-stroke: #2A3B4D;
+    --color-chat-buttons: #1A2A3A;
+}
+
+/* =========================================
+   БАЗА (reset + общие настройки)
+   ========================================= */
+
+/* --- Корневой box-model --- */
+html {
+    box-sizing: border-box;
+    height: 100%;
+    margin: 0;
+}
+
+*,
+::before,
+::after {
+    font-family: 'Inter', sans-serif;
+    box-sizing: inherit;
+}
+
+/* --- Страница --- */
+body {
+    background: var(--color-bg-page);
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    font-weight: inherit; /* часто добавляют ещё это */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    background: none;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+span, button, label {
+    cursor: pointer;
+}
+
+button {
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-size: var(--font-button-text);
+    font-weight: 600;
+}
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    gap: 10px;
+}
+
+    .container > main {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 366px;
+    }
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: var(--color-bg-card);
+    padding: 20px;
+    border-radius: 12px;
+    width: 366px;
+}
+
+.additinal-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input-checkbox {
+    cursor: pointer;
+}
+
+.input-label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    color: var(--color-text-secondary);
+}
+
+.login-input, .password-input, .email-input {
+    padding: 10px;
+    border-radius: 12px;
+    border: 2px solid var(--color-chat-stroke);
+    outline: none;
+    font-weight: 400;
+    font-size: var(--font-label);
+    color: var(--color-text-secondary);
+}
+
+.submit-btn {
+    background: var(--color-btn-primary-bg);
+    width: 180px;
+    height: 28px;
+    color: var(--color-btn-primary-text);
+    padding: 3px 18px;
+    font-weight: 400;
+    font-size: var(--font-label);
+}
+
+.submit-btn-block {
+    display: flex;
+    justify-content: center;
+}
+
+.additinal-btns span {
+    font-weight: 400;
+    font-size: var(--font-label);
+    color: var(--color-text-secondary);
+}
+
+.input-checkbox {
+    color: var(--color-chat-stroke);
+    width: 19px;
+    height: 19px;
+    border-radius: 12px;
+}
+
+.submit-btn:hover {
+    background: var(--color-btn-primary-hover);
+}
+
+a:hover {
+    color: var(--color-btn-primary-hover);
+}

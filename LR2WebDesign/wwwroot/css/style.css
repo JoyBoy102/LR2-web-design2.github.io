@@ -37,6 +37,8 @@
     --color-review-card-bg: #FFFFFF;
     --color-chat-stroke: #E5E7EB;
     --color-chat-buttons: #FFFFFF;
+    /* --- Стрелки ---*/
+    --color-arrow: #000000;
     /* =========================================
        МАСШТАБ (относительно desktop 1440px)
        ========================================= */
@@ -106,6 +108,87 @@
     }
 }
 
+[data-theme="dark"] {
+    /* --- Основные фоны и текст --- */
+    --color-bg-page: #0A1420;
+    --color-bg-card: #142436;
+    --color-heading: #EEF8FF;
+    --color-text-primary: #C7D5E5;
+    --color-text-secondary: #8A9BAD;
+    --color-border-card: #2A3B4D;
+    /* --- Header и Меню --- */
+    --color-header-glass: rgba(10, 20, 32, 0.85);
+    --color-menu-link: #A8B8C8;
+    --color-menu-hover: #A78BFA;
+    --color-menu-underline: #34F6F2;
+    /* --- Кнопки --- */
+    --color-btn-secondary-bg: #5A64D9;
+    --color-btn-secondary-bg-hover: #7680F2;
+    --color-btn-primary-text: #FFFFFF;
+    --color-btn-primary-hover: #3A73E8;
+    --color-btn-primary-bg: #1A5FF5;
+    /* --- Карточки --- */
+    --color-card-title: #EEF8FF;
+    --color-card-text: #A8B8C8;
+    --color-card-hover-bg: #1A2F45;
+    --color-card-hover-shadow: #000000;
+    /* --- Footer --- */
+    --color-footer-bg: #050E18;
+    --color-footer-text: #EEF8FF;
+    --color-footer-link-hover: #34F6F2;
+    /* --- Поля ввода --- */
+    --color-input-bg: #1A2A3A;
+    /* --- Chips --- */
+    --color-cheaps-bg: #1A2A3A;
+    --color-cheap-bg: #2A3B4D;
+    --color-cheap-hover: #EEF8FF;
+    --color-cheap-text-hover: #0B1B2B;
+    /* --- Отзывы и чат --- */
+    --color-review-card-bg: #142436;
+    --color-chat-stroke: #2A3B4D;
+    --color-chat-buttons: #1A2A3A;
+    /* --- Стрелки ---*/
+    --color-arrow: #FFFFFF;
+}
+
+
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--color-heading);
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.theme-toggle:hover {
+    background: rgba(0, 0, 0, 0.06);
+    transform: rotate(15deg);
+}
+
+.theme-toggle__icon {
+    width: 22px;
+    height: 22px;
+    display: block;
+    transition: opacity 0.2s, transform 0.3s;
+}
+
+.theme-toggle__icon--sun  { display: none; }
+.theme-toggle__icon--moon { display: block; }
+
+[data-theme="dark"] .theme-toggle__icon--sun  { display: block; }
+[data-theme="dark"] .theme-toggle__icon--moon { display: none; }
+
+[data-theme="dark"] .theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
 /* =========================================
    БАЗА
    ========================================= */
@@ -140,6 +223,7 @@ button {
 
 h1 {
     font-size: var(--font-paragraph);
+    color: var(--color-text-primary);
     font-weight: 700;
     margin: 0;
 }
@@ -186,11 +270,11 @@ h2 {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    max-width: calc(451px * var(--scale));
+    max-width: calc(551px * var(--scale));
     min-height: calc(37px * var(--scale));
 }
 
-    .header__buttons button:not(.sign-in_btn) {
+    .header__buttons button:not(.sign-in_btn, .theme-toggle) {
         width: 100%;
         max-width: calc(180px * var(--scale));
         height: calc(37px * var(--scale));
@@ -348,6 +432,9 @@ h2 {
     border-radius: calc(12px * var(--scale));
     padding: calc(12px * var(--scale));
     align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    cursor: pointer;
 }
 
     .course-card svg {
@@ -388,6 +475,7 @@ h2 {
     align-items: center;
     max-height: calc(663px * var(--scale));
     height: calc(663px * var(--scale));
+    color: var(--color-text-primary);
 }
 
 .review {
@@ -456,6 +544,10 @@ h2 {
 
 .reviews > svg {
     cursor: pointer;
+}
+
+.arrow path {
+    stroke : var(--color-arrow);
 }
 
 /* =========================================
@@ -532,7 +624,7 @@ footer {
 /* =========================================
 HOVER
 ========================================= */
-.header__buttons button:hover:not(.sign-in_btn) {
+.header__buttons button:hover:not(.sign-in_btn, .theme-toggle) {
     background: var(--color-btn-secondary-bg-hover);
 }
 
@@ -543,4 +635,25 @@ HOVER
 .popular-courses__cheaps button:hover {
     background: var(--color-cheap-hover);
     color: var(--color-cheap-text-hover);
+}
+
+.course-card {
+    
+}
+
+.course-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: none;
 }
