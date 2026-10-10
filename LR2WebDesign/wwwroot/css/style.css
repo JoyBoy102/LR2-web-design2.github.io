@@ -318,9 +318,11 @@ h2 {
 }
 
 .banner__img {
+    display: block;
     width: 100%;
     max-width: calc(819px * var(--scale));
-    height: calc(428px * var(--scale));
+    height: auto;
+    aspect-ratio: 819 / 428;
     object-fit: cover;
     border-radius: calc(12px * var(--scale));
 }
