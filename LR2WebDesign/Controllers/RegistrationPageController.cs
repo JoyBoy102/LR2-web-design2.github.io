@@ -17,7 +17,7 @@ namespace LR2WebDesign.Controllers
         [HttpPost("create")]
         public async Task<IActionResult> RegUser([FromBody] UserRequestBody userRequestBody)
         {
-            _userService.CreateUser(userRequestBody);
+            await _userService.CreateUser(userRequestBody);
             return Ok();
         }
     }   

@@ -5,12 +5,14 @@ namespace LR2WebDesign.Services.Interfaces
 {
     public interface IUserRepository
     {
-        public void Create(User user);
-        public void Update(User user);
+        public Task Create(User user);
+        public Task Update(User user);
 
-        public void Delete(int userId);
+        public Task Delete(int userId);
 
-        public User GetUser(int userId);
+        public Task<User> GetUser(int userId);
+
+        public Task<(bool, string)> UserExists(User user);
 
     }
 }

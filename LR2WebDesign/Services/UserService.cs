@@ -13,7 +13,7 @@ namespace LR2WebDesign.Services
             _userRepository = userRepository;
         }
 
-        public void CreateUser(UserRequestBody userRequestBody)
+        public async Task CreateUser(UserRequestBody userRequestBody)
         {
             User user = new User
             {
@@ -22,31 +22,58 @@ namespace LR2WebDesign.Services
                 Password = userRequestBody.Password,
                 Email = userRequestBody.Email,
             };
-            _userRepository.Create(user);
-        }
 
-        public void UpdateUser(UserRequestBody userRequestBody)
-        {
-            DeleteUser(userRequestBody.Id);
-            CreateUser(userRequestBody);
-        }
+            var userExistsObj = await _userRepository.UserExists(user);
 
-        public void DeleteUser(int userId)
-        {
-            _userRepository.Delete(userId);
-        }
-
-        public UserRequestBody GetUser(int userId)
-        {
-            User user = _userRepository.GetUser(userId);
-            return new UserRequestBody
+            if (userExistsObj.Item1)
             {
-                Id = userId,
-                Login = user.Login,
-                Name = user.Name,
-                Password = user.Password,
-                Email = user.Email,
-            };
+                throw new ArgumentException($"Пользователь с таким {userExistsObj.Item2} уже существует.");
+            }
+            else
+            { 
+                await _userRepository.Create(user);
+            }
+            
+        }
+
+        public async Task UpdateUser(UserRequestBody userRequestBody)
+        {
+            await DeleteUser(userRequestBody.Id);
+            await CreateUser(userRequestBody);
+        }
+
+        public async Task DeleteUser(int userId)
+        {
+            try
+            {
+                var user = await _userRepository.GetUser(userId);
+                await _userRepository.Delete(user.Id);
+            }
+            
+            catch (Exception ex)
+            {
+                throw new ArgumentException($"Ошибка при удалении пользователя с Id = {userId}: {ex}");
+            }
+        }
+
+        public async Task<UserRequestBody> GetUser(int userId)
+        {
+            try
+            {
+                User user = await _userRepository.GetUser(userId);
+                return new UserRequestBody
+                {
+                    Id = userId,
+                    Login = user.Login,
+                    Name = user.Name,
+                    Password = user.Password,
+                    Email = user.Email,
+                };
+            }
+            catch (Exception ex)
+            {
+               throw new ArgumentException($"Ошибка при получении пользователя с Id = {userId}: {ex}");
+            }
         }
     }
 }

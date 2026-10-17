@@ -4,12 +4,12 @@ namespace LR2WebDesign.Controllers.Interfaces
 {
     public interface IUserService
     {
-        public void CreateUser(UserRequestBody userBody);
+        public Task CreateUser(UserRequestBody userBody);
 
-        public void UpdateUser(UserRequestBody userBody);
+        public Task UpdateUser(UserRequestBody userBody);
 
-        public void DeleteUser(int userId);
+        public Task DeleteUser(int userId);
 
-        public UserRequestBody GetUser(int userId);
+        public Task<UserRequestBody> GetUser(int userId);
     }
 }
