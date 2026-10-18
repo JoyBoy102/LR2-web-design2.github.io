@@ -12,7 +12,7 @@ namespace LR2WebDesign.Services.Interfaces
 
         public Task<User> GetUser(int userId);
 
-        public Task<(bool, string)> UserExists(User user);
+        public Task<(bool, string, User?)> GetUser(User newUser);
 
     }
 }

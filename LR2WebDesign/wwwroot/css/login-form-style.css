@@ -224,7 +224,7 @@ button {
     color: var(--color-text-secondary);
 }
 
-.login-input, .password-input {
+.login-or-email-input, .password-input {
     padding: 10px;
     border-radius: 12px;
     border: 2px solid var(--color-chat-stroke);

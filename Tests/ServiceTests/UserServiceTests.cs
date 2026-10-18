@@ -19,7 +19,7 @@ namespace Tests.ServiceTests
             var mockUserRepository = new Mock<IUserRepository>();
             var userService = new UserService(mockUserRepository.Object);
 
-            var request = new UserRequestBody
+            var request = new UserCreateRequestDTO
             {
                 Login = "new_user",
                 Name = "",
@@ -80,7 +80,7 @@ namespace Tests.ServiceTests
             var mockUserRepository = new Mock<IUserRepository>();
             var userService = new UserService(mockUserRepository.Object);
 
-            var request = new UserRequestBody
+            var request = new UserCreateRequestDTO
             {
                 Login = "new_user",
                 Name = "",

@@ -3,14 +3,53 @@ using LR2WebDesign.Exceptions;
 using LR2WebDesign.Infrastructure.Repositories;
 using LR2WebDesign.Services;
 using LR2WebDesign.Services.Interfaces;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.IdentityModel.Tokens.Experimental;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, InMemoryUserRepository>();
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateAudience = true,
+        ValidateIssuer = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
+    };
+
+    options.Events = new JwtBearerEvents
+    {
+        OnMessageReceived = ctx =>
+        {
+            if (ctx.Request.Cookies.TryGetValue("accessToken", out var token))
+                ctx.Token = token;
+            return Task.CompletedTask;
+        },
+
+        OnChallenge = ctx =>
+        {
+            ctx.HandleResponse();
+            ctx.Response.Redirect($"/authorization");
+            return Task.CompletedTask;
+        }
+
+    };
+});
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
@@ -25,6 +64,8 @@ app.Map("/error", app => app.Run(async context =>
         UserAlreadyExistsException => 409,
         GetUserException => 404,
         UserDeleteException => 400,
+        UserUpdateException => 400,
+        InvalidCredentialsException => 401,
         _ => 500
     };
 
@@ -41,10 +82,13 @@ app.Map("/error", app => app.Run(async context =>
 
     await context.Response.WriteAsJsonAsync(errorResponse);
 }));
-
 app.UseDefaultFiles();
 app.UseStaticFiles();
 app.UseRouting();
+
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.MapControllers();
 
 app.Run();

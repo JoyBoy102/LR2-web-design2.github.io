@@ -16,10 +16,11 @@ namespace LR2WebDesign.Controllers
         }
 
         [HttpPost("create")]
-        public async Task<IActionResult> RegUser([FromBody] UserRequestBody userRequestBody)
+        public async Task<IActionResult> RegUser([FromBody] UserCreateRequestDTO UserCreateRequest, IConfiguration config)
         {
-            await _userService.CreateUser(userRequestBody);
-            return Ok();
+            var tokenString = await _userService.CreateUser(UserCreateRequest, config);
+            Response.Cookies.Append("accessToken", tokenString);
+            return Ok(new { redirectUrl = "/", accessToken = tokenString });
         }
     }   
 }

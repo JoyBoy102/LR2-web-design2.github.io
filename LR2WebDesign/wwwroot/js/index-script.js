@@ -2,12 +2,12 @@
 
     const ai_constructor_button = document.querySelector('.ai-constructor-btn');
     ai_constructor_button.addEventListener('click', () => {
-        window.location.href = 'ai-constructor.html';
+        window.location.href = 'ai-constructor';
     });
 
     const signin_button = document.querySelector('.sign-in_btn');
     signin_button.addEventListener('click', () => {
-        window.location.href = 'login.html';
+        window.location.href = 'authorization';
     });
 
     const html = document.documentElement;

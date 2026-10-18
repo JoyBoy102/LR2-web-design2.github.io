@@ -6,5 +6,8 @@
         : base($"Ошибка при получении пользователя с Id = {userId}: {ex}")
         {
         }
+        public GetUserException(string message) : base(message)
+        {
+        }
     }
 }

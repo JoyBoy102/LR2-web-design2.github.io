@@ -9,6 +9,7 @@
         var user_password = document.querySelector('.password-input').value;
         var user_email = document.querySelector('.email-input').value;
         var user_name = crypto.randomUUID();
+        var tokenKey = "accessToken";
 
         const userPayload = {
             login: user_login,
@@ -49,6 +50,8 @@
             }
 
             const data = await response.json();
+            localStorage.setItem(tokenKey, data.accessToken);
+            window.location.href = data["redirectUrl"];
             console.log('Успешно отправлено! Ответ сервера:', data);
         } catch (error) {
             console.error('Не удалось выполнить запрос:', error);

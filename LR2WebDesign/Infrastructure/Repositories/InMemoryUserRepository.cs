@@ -20,7 +20,7 @@ namespace LR2WebDesign.Infrastructure.Repositories
 
         public async Task<User> GetUser(int userId)
         {
-            return users[userId];
+            return users.GetValueOrDefault(userId);
         }
 
         public async Task Update(User user)
@@ -28,16 +28,16 @@ namespace LR2WebDesign.Infrastructure.Repositories
             users[user.Id] = user; 
         }
 
-        public async Task<(bool, string)> UserExists(User newUser)
+        public async Task<(bool, string, User?)> GetUser(User newUser)
         {
             foreach (var user in users)
             {
-                if (user.Value.Email == newUser.Email)
-                    return (true, "Email");
-                else if (user.Value.Login == newUser.Login)
-                    return (true, "Login");
+                if (user.Value.Email!=null && user.Value.Email == newUser.Email)
+                    return (true, "Email", user.Value);
+                else if (user.Value.Login!=null && user.Value.Login == newUser.Login)
+                    return (true, "Login", user.Value);
             }
-            return (false, "");
+            return (false, "", null);
         }
     }
 }
