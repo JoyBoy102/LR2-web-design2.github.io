@@ -4,12 +4,13 @@ namespace LR2WebDesign.Infrastructure.Repositories
 {
     public class InMemoryUserRepository : IUserRepository
     {
-        public Dictionary<int, User> users = new Dictionary<int, User>();
-        private int incrementId = 0;
+        public Dictionary<int, User> users = StaticMemoryDB.users;
+        private int incrementId = StaticMemoryDB.incrementId;
 
         public async Task Create(User user)
         {
-            users.Add(incrementId++, user);
+            user.Id = incrementId++;
+            users.Add(incrementId, user);
         }
 
         public async Task Delete(int userId)

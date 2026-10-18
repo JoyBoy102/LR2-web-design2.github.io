@@ -1,4 +1,5 @@
 ﻿using LR2WebDesign.Controllers.APIRequestBodies;
+using LR2WebDesign.Exceptions;
 using LR2WebDesign.Services;
 using LR2WebDesign.Services.Entities;
 using LR2WebDesign.Services.Interfaces;
@@ -91,7 +92,7 @@ namespace Tests.ServiceTests
                 .ReturnsAsync((true, "Login"));
 
 
-            var exception = await Assert.ThrowsAsync<ArgumentException>(() => userService.CreateUser(request));
+            var exception = await Assert.ThrowsAsync<UserAlreadyExistsException>(() => userService.CreateUser(request));
             Assert.Equal($"Пользователь с таким Login уже существует.", exception.Message);
 
             mockUserRepository.Verify(
@@ -119,7 +120,7 @@ namespace Tests.ServiceTests
                               .ThrowsAsync(new ArgumentException($"key {deleteId} не найден"));
 
             var userService = new UserService(mockUserRepository.Object);
-            var exception = await Assert.ThrowsAsync<ArgumentException>(() => userService.DeleteUser(deleteId));
+            var exception = await Assert.ThrowsAsync<UserDeleteException>(() => userService.DeleteUser(deleteId));
             Assert.Contains($"Ошибка при удалении пользователя с Id = {deleteId}", exception.Message);
             Assert.Contains($"key {deleteId} не найден", exception.Message);
             mockUserRepository.Verify(
@@ -138,7 +139,7 @@ namespace Tests.ServiceTests
 
             var userService = new UserService(mockUserRepository.Object);
             
-            var exception = await Assert.ThrowsAsync<ArgumentException>(() => userService.GetUser(getId));
+            var exception = await Assert.ThrowsAsync<GetUserException>(() => userService.GetUser(getId));
 
             Assert.Contains($"Ошибка при получении пользователя с Id = {getId}", exception.Message);
             Assert.Contains($"key {getId} не найден", exception.Message);

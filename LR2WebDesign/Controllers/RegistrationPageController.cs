@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LR2WebDesign.Controllers
 {
+    [ApiController]
     [Route("registration")]
     public class RegistrationPageController : Controller
     {

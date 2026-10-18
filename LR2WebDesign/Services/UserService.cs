@@ -2,6 +2,7 @@
 using LR2WebDesign.Services.Entities;
 using LR2WebDesign.Services.Interfaces;
 using LR2WebDesign.Controllers.APIRequestBodies;
+using LR2WebDesign.Exceptions;
 
 namespace LR2WebDesign.Services
 {
@@ -17,6 +18,7 @@ namespace LR2WebDesign.Services
         {
             User user = new User
             {
+                Id = userRequestBody.Id,
                 Login = userRequestBody.Login,
                 Name = userRequestBody.Name,
                 Password = userRequestBody.Password,
@@ -27,7 +29,7 @@ namespace LR2WebDesign.Services
 
             if (userExistsObj.Item1)
             {
-                throw new ArgumentException($"Пользователь с таким {userExistsObj.Item2} уже существует.");
+                throw new UserAlreadyExistsException(userExistsObj.Item2);
             }
             else
             { 
@@ -52,7 +54,7 @@ namespace LR2WebDesign.Services
             
             catch (Exception ex)
             {
-                throw new ArgumentException($"Ошибка при удалении пользователя с Id = {userId}: {ex}");
+                throw new UserDeleteException(userId, ex.Message);
             }
         }
 
@@ -72,7 +74,7 @@ namespace LR2WebDesign.Services
             }
             catch (Exception ex)
             {
-               throw new ArgumentException($"Ошибка при получении пользователя с Id = {userId}: {ex}");
+               throw new GetUserException(userId, ex.Message);
             }
         }
     }
