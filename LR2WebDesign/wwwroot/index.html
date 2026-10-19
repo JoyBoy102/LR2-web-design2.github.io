@@ -22,6 +22,24 @@
                 </defs>
             </svg>
 
+            <div class="search__container">
+                <div class="search">
+                    <!-- + aria-label добавлен, чтобы WAVE видел подпись у input -->
+                    <input type="text"
+                           aria-label="Поиск курса по названию или навыку"
+                           placeholder="Введите название курса или навык, который хотите освоить">
+
+                    <!-- + aria-label добавлен, чтобы у кнопки было доступное имя -->
+                    <button type="button" aria-label="Найти курс">
+                        <svg viewBox="0 0 48 45" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                            <path d="M22 31.5C28.0751 31.5 33 26.5751 33 20.5C33 14.4249 28.0751 9.5 22 9.5C15.9249 9.5 11 14.4249 11 20.5C11 26.5751 15.9249 31.5 22 31.5Z" stroke="#5A6B7D" />
+                            <path d="M30 28.5L38 36.5" stroke="#5A6B7D" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+
+                </div>
+            </div>
+
             <div class="header__buttons">
 
                 <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему" type="button">
@@ -51,7 +69,7 @@
                     <svg viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
                         <path d="M4.625 6.16667H10.7917V12.3333H4.625V6.16667ZM13.875 7.70833V10.7917H32.375V7.70833H13.875ZM4.625 15.4167H10.7917V21.5833H4.625V15.4167ZM13.875 16.9583V20.0417H32.375V16.9583H13.875ZM4.625 24.6667H10.7917V30.8333H4.625V24.6667ZM13.875 26.2083V29.2917H32.375V26.2083H13.875Z" fill="black" />
                     </svg>
-                    
+
                     <span>Каталог</span>
                 </button>
 
@@ -75,25 +93,9 @@
                         decoding="async">
             </section>
 
-            <div class="search__container">
-                <div class="search">
-                    <!-- + aria-label добавлен, чтобы WAVE видел подпись у input -->
-                    <input type="text"
-                           aria-label="Поиск курса по названию или навыку"
-                           placeholder="Введите название курса или навык, который хотите освоить">
-
-                    <!-- + aria-label добавлен, чтобы у кнопки было доступное имя -->
-                    <button type="button" aria-label="Найти курс">
-                        <svg viewBox="0 0 48 45" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                            <path d="M22 31.5C28.0751 31.5 33 26.5751 33 20.5C33 14.4249 28.0751 9.5 22 9.5C15.9249 9.5 11 14.4249 11 20.5C11 26.5751 15.9249 31.5 22 31.5Z" stroke="#5A6B7D" />
-                            <path d="M30 28.5L38 36.5" stroke="#5A6B7D" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                    </button>
-
-                </div>
-            </div>
 
             <section class="popular-courses">
+                <h2 class="popular-courses-h2">Популярные курсы по направлениям</h2>
                 <div class="popular-courses__cheaps">
                     <button>Python</button>
                     <button>Веб-разработка</button>
@@ -129,7 +131,7 @@
 
                 <div class="course-cards reveal">
 
-                    
+
                 </div>
             </section>
 
