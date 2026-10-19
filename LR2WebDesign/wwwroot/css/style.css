@@ -437,6 +437,8 @@ h2 {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 0 0 rgba(0, 0, 0, 0);
     cursor: pointer;
+    text-decoration: none;
+    color: inherit;
 }
 
     .course-card svg {
@@ -658,4 +660,13 @@ HOVER
 .reveal.is-visible {
     opacity: 1;
     transform: none;
+}
+
+/* =========================================
+FOCUS
+========================================= */
+
+.popular-courses__cheaps button:focus {
+    background: var(--color-cheap-hover);
+    color: var(--color-cheap-text-hover);
 }

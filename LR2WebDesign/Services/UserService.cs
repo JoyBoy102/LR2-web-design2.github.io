@@ -92,6 +92,7 @@ namespace LR2WebDesign.Services
             
         }
 
+
         private string GenerateJwtTokenString(User userExistsObj, IConfiguration config)
         {
             var claims = new List<Claim>

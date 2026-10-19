@@ -1,0 +1,25 @@
+{
+  "Веб-разработка": [
+    {
+      "id": 1,
+      "title": "HTML и CSS",
+      "description": "Основы верстки",
+      "image": "logo_756.png",
+      "url": "https://practicum.yandex.ru/html-css/"
+    },
+    {
+      "id": 2,
+      "title": "JavaScript",
+      "description": "Интерактивность",
+      "image": "Skillbox-prev.png",
+      "url": "https://skillbox.ru/course/javascript/"
+    },
+    {
+      "id": 3,
+      "title": "Python",
+      "description": "Бэкенд разработка",
+      "image": "Stepik-Logo.png",
+      "url": "https://stepik.org/course/211592/promo"
+    }
+  ]
+}
