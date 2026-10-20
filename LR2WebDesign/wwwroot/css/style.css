@@ -436,6 +436,7 @@ h2 {
     gap: calc(11px * var(--scale)) calc(21px * var(--scale));
 }
 
+
 .course-card {
     flex: 1 1 calc(var(--course-cards-basis) - calc(60px * var(--scale)));
     min-width: max-content;
