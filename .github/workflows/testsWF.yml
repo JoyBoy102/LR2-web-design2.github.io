@@ -32,7 +32,7 @@ jobs:
       run: dotnet build --no-restore --configuration Release
 
     - name: Run xUnit tests
-      run: dotnet test --no-build --configuration Release --logger "trx;LogFileName=test-results.trx" --results-directory TestResults
+      run: dotnet test Tests/Tests.csproj --no-build --configuration Release --logger "trx;LogFileName=test-results.trx" --results-directory TestResults
 
     - name: Publish test results
       uses: dorny/test-reporter@v1
