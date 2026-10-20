@@ -21,7 +21,7 @@ namespace LR2WebDesign.Services
             _userRepository = userRepository;
         }
 
-        public async Task<string> CreateUser(UserCreateRequestDTO UserCreateRequest, IConfiguration config)
+        public async Task<(string, int)> CreateUser(UserCreateRequestDTO UserCreateRequest, IConfiguration config)
         {
             User user = new User
             {
@@ -41,7 +41,7 @@ namespace LR2WebDesign.Services
             { 
                 await _userRepository.Create(user);
                 var tokenString = GenerateJwtTokenString(user, config);
-                return tokenString;
+                return (tokenString, user.Id);
             }
             
         }
@@ -90,6 +90,18 @@ namespace LR2WebDesign.Services
                 return tokenString;
             }
             
+        }
+
+        public async Task DeleteUser(int userId)
+        {
+            try
+            {
+                await _userRepository.Delete(userId);
+            }
+            catch (Exception ex)
+            {
+                throw new UserDeleteException(userId, ex.Message);
+            }
         }
 
 

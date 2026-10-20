@@ -17,12 +17,12 @@
             <h1>Регистрация</h1>
             <form class="registration-form">
                 <!-- Рекомендую добавить type="email" для почты -->
-                <input class="email-input" placeholder="Почта" type="email" />
-                <input class="login-input" placeholder="Логин" />
-                <input class="password-input" placeholder="Пароль" type="password" />
+                <input class="email-input" placeholder="Почта" type="email" data-testid="email-input"/>
+                <input class="login-input" placeholder="Логин" data-testid="login-input"/>
+                <input class="password-input" placeholder="Пароль" type="password" data-testid="password-input"/>
 
                 <div class="submit-btn-block">
-                    <button type="button" class="submit-btn">Зарегистрироваться</button>
+                    <button type="button" class="submit-btn" data-testid="submit-btn">Зарегистрироваться</button>
                 </div>
             </form>
             <div class="additinal-btns">

@@ -21,19 +21,19 @@
         <main>
             <h1>Авторизация</h1>
             <form class="login-form">
-                <input class="login-or-email-input" placeholder="Логин или почта" />
-                <input class="password-input" placeholder="Пароль" type="password" />
+                <input class="login-or-email-input" placeholder="Логин или почта" data-testid="login-or-email-input" />
+                <input class="password-input" placeholder="Пароль" type="password" data-testid="password-input" />
                 <label class="input-label">
                     <input class="input-checkbox" type="checkbox" name="remember">
                     Запомнить пароль
                 </label>
 
                 <div class="submit-btn-block">
-                    <button type="submit" class="submit-btn">Войти</button>
+                    <button type="submit" class="submit-btn" data-testid="submit-btn">Войти</button>
                 </div>
             </form>
             <div class="additinal-btns">
-                <span><a href="/registration">Регистрация</a> | <a>Забыли пароль?</a></span>
+                <span><a data-testid="reg-ref" href="/registration">Регистрация</a> | <a>Забыли пароль?</a></span>
                 <span><a href="/">← Вернуться назад</a></span>
             </div>
         </main>

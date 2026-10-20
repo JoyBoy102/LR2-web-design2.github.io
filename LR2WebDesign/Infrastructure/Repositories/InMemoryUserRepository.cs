@@ -9,12 +9,17 @@ namespace LR2WebDesign.Infrastructure.Repositories
 
         public async Task Create(User user)
         {
-            user.Id = incrementId++;
-            users.Add(incrementId, user);
+            user.Id = incrementId;
+            users.Add(incrementId++, user);
         }
 
         public async Task Delete(int userId)
         {
+            if (!users.ContainsKey(userId))
+            {
+                throw new KeyNotFoundException($"Пользователь с ID {userId} не найден");
+            }
+
             users.Remove(userId);
         }
 
@@ -25,7 +30,7 @@ namespace LR2WebDesign.Infrastructure.Repositories
 
         public async Task Update(User user)
         {
-            users[user.Id] = user; 
+            throw new NotImplementedException(); 
         }
 
         public async Task<(bool, string, User?)> GetUser(User newUser)
