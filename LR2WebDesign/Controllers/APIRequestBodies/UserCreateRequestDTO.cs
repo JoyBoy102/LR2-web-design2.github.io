@@ -17,5 +17,6 @@ namespace LR2WebDesign.Controllers.APIRequestBodies
         [Required(ErrorMessage = "Email обязателен для заполнения")]
         [EmailAddress(ErrorMessage = "Некорректный формат Email")]
         public string? Email { get; set; }
+
     }
 }
