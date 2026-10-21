@@ -30,7 +30,8 @@
         });
 
         try {
-            const response = await fetch('https://localhost:7280/registration/create', {
+            const returnUrl = new URLSearchParams(window.location.search).get("returnUrl") ?? "/";
+            const response = await fetch(`https://localhost:7280/registration/create?returnUrl=${encodeURIComponent(returnUrl)}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

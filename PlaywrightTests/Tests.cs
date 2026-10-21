@@ -10,6 +10,22 @@ namespace PlaywrightTests
     [TestFixture]
     public class Tests : PageTest
     {
+
+        [SetUp]
+        public async Task Setup()
+        {
+            await Page.AddInitScriptAsync(@"
+                Object.defineProperty(navigator, 'webdriver', {
+                    get: () => undefined
+                });
+            ");
+
+            await Page.Context.SetExtraHTTPHeadersAsync(new Dictionary<string, string>
+            {
+                { "User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" }
+            });
+        }
+
         [Test]
         public async Task LoginTestUserDoesNotExists()
         {
@@ -23,35 +39,10 @@ namespace PlaywrightTests
         [Test]
         public async Task LoginTestUserExists()
         {
-            var apiContext = await Playwright.APIRequest.NewContextAsync(new()
-            {
-                IgnoreHTTPSErrors = true
-            });
-            var formData = new UserCreateRequestDTO
-            {
-                Email = "user@example.com",
-                Login = "user121",
-                Name = "",
-                Password = "Password123@"
-            };
-
-            var response = await apiContext.PostAsync("https://localhost:7280/admin/createUser", new()
-            {
-                DataObject = formData
-            });
-
             var loginPage = new LoginPage(Page);
             await loginPage.GotoAsync();
             await loginPage.LoginAsync("user@example.com", "Password123@");
-
             await Expect(Page).ToHaveURLAsync(new Regex(@"^https?://[^/]+/?$"));
-
-            if (response.Status == 200)
-            {
-                var json = await response.JsonAsync();
-                int userId = json.Value.GetProperty("userId").GetInt32();
-                var deleteResponse = await apiContext.PostAsync($"https://localhost:7280/admin/deleteUser?userId={userId}");
-            }
         }
 
         [Test]
@@ -99,10 +90,39 @@ namespace PlaywrightTests
         {
             var regPage = new RegisterPage(Page);
             await regPage.GotoAsync();
-            await regPage.RegAsync("user@example.com", "user123", "Password123@");
-
+            await regPage.RegAsync("user1234@example.com", "user1234", "Password1234@");
             await Expect(Page).ToHaveURLAsync(new Regex(@"^https?://[^/]+/?$"));
         }
 
+        [Test]
+        public async Task MainPageTestCourseCardClick()
+        {
+            var mainPage = new MainPage(Page);
+            await mainPage.GotoAsync();
+            var newPageUrl = await mainPage.ClickCourseCardAsync();
+            var expectedUrl = await mainPage.GetCourseCardHrefAsync();
+            Assert.That(newPageUrl, Is.EqualTo(expectedUrl));
+        }
+
+        [Test]
+        public async Task MainPageTestAiConstructorUserExistsNotAuthorized()
+        {
+            var mainPage = new MainPage(Page);
+            await mainPage.GotoAsync();
+            var loginPage = await mainPage.ClickAiConstructorAsync();
+            await loginPage.LoginAsync("user@example.com", "Password123@");
+            await Expect(Page).ToHaveURLAsync(new Regex(@"^https?://[^/]+/ai-constructor/?(\?.*)?$"));
+        }
+
+        [Test]
+        public async Task MainPageTestAiConstructorUserDoseNotExists()
+        {
+            var mainPage = new MainPage(Page);
+            await mainPage.GotoAsync();
+            var loginPage = await mainPage.ClickAiConstructorAsync();
+            var regPage = await loginPage.ClickRegisterBtn();
+            await regPage.RegAsync("user12345@example.com", "user12345", "Password12345@");
+            await Expect(Page).ToHaveURLAsync(new Regex(@"^https?://[^/]+/ai-constructor/?(\?.*)?$"));
+        }
     }
 }

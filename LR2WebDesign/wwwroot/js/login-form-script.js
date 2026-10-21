@@ -1,5 +1,10 @@
 ﻿document.addEventListener('DOMContentLoaded', () => {
 
+    const reg_ref = document.querySelector('.reg-ref');
+    const returnUrl = new URLSearchParams(window.location.search).get("returnUrl") ?? "/";
+    reg_ref.href = `/registration?returnUrl=${encodeURIComponent(returnUrl)}`;
+
+
     const login_button = document.querySelector('.submit-btn');
 
     login_button.addEventListener('click', async (event) => {
@@ -29,7 +34,8 @@
         });
 
         try {
-            const response = await fetch('https://localhost:7280/authorization/login', {
+            const returnUrl = new URLSearchParams(window.location.search).get("returnUrl") ?? "/";
+            const response = await fetch(`https://localhost:7280/authorization/login?returnUrl=${encodeURIComponent(returnUrl)}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

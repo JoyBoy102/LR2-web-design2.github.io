@@ -12,7 +12,7 @@ namespace PlaywrightTests.Pages
         private readonly ILocator _emailOrLoginInput;
         private readonly ILocator _passwordInput;
         private readonly ILocator _submitButton;
-
+        private readonly ILocator _regRef;
         public readonly ILocator SwalToast;
 
 
@@ -22,6 +22,7 @@ namespace PlaywrightTests.Pages
             _emailOrLoginInput = page.GetByTestId("login-or-email-input");
             _passwordInput = page.GetByTestId("password-input");
             _submitButton = page.GetByTestId("submit-btn");
+            _regRef = page.GetByTestId("reg-ref");
             SwalToast = page.GetByRole(AriaRole.Alert);
         }
 
@@ -35,6 +36,12 @@ namespace PlaywrightTests.Pages
             await _emailOrLoginInput.FillAsync(emailOrLogin);
             await _passwordInput.FillAsync(password);
             await _submitButton.ClickAsync();
+        }
+
+        public async Task<RegisterPage> ClickRegisterBtn()
+        {
+            await _regRef.ClickAsync();
+            return new RegisterPage(_page);
         }
     }
 }

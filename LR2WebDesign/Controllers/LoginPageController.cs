@@ -16,11 +16,15 @@ namespace LR2WebDesign.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IResult> LoginUser([FromBody] UserLoginRequestDTO userLoginRequest, IConfiguration config)
+        public async Task<IResult> LoginUser([FromBody] UserLoginRequestDTO userLoginRequest,
+                                             [FromQuery] string? returnUrl,
+                                             IConfiguration config)
         {
             var tokenString = await _userService.LoginUser(userLoginRequest, config);
+
             Response.Cookies.Append("accessToken", tokenString);
-            return Results.Ok(new { accessToken = tokenString, redirectUrl = "/" });
+
+            return Results.Ok(new { accessToken = tokenString, redirectUrl = returnUrl });
         }
     }
 }

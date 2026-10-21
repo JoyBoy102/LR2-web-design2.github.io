@@ -52,23 +52,25 @@
             console.warn(`Категория "${key}" не найдена`);
             return;
         }
-        courses.forEach(course => {
+        courses.forEach((course, index) => {
             var courseCard = document.createElement('a');
 
             courseCard.classList.add('course-card');
-
             courseCard.href = course.url;
             courseCard.target = '_blank';
-
             courseCard.rel = 'noopener noreferrer';
 
+            if (index === 0) {
+                courseCard.dataset.testid = 'first_course_card_test';
+            }
+
             courseCard.innerHTML = `
-                    <img src="images/course_logos/${course.image}" alt="${course.title}" width="128" height="136">
-                    <div class="course-card__text">
-                        <span>${course.title}</span>
-                        <span>${course.description}</span>
-                    </div>
-            `;
+                                        <img src="images/course_logos/${course.image}" alt="${course.title}" width="128" height="136">
+                                        <div class="course-card__text">
+                                            <span>${course.title}</span>
+                                            <span>${course.description}</span>
+                                        </div>
+                                    `;
 
             container.appendChild(courseCard);
         });

@@ -43,7 +43,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         OnChallenge = ctx =>
         {
             ctx.HandleResponse();
-            ctx.Response.Redirect($"/authorization");
+
+            if (ctx.Request.Path.StartsWithSegments("/authorization"))
+                return Task.CompletedTask;
+
+            var returnUrl = ctx.Request.Path + ctx.Request.QueryString;
+            var redirect = $"/authorization?returnUrl={Uri.EscapeDataString(returnUrl)}";
+            ctx.Response.Redirect(redirect);
             return Task.CompletedTask;
         }
 
