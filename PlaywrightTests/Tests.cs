@@ -1,6 +1,7 @@
 ﻿using LR2WebDesign.Controllers.APIRequestBodies;
 using LR2WebDesign.Infrastructure.Repositories;
 using LR2WebDesign.Services;
+using Microsoft.Playwright;
 using PlaywrightTests.Pages;
 using System.Net.Http.Json;
 
@@ -10,15 +11,23 @@ namespace PlaywrightTests
     [TestFixture]
     public class Tests : PageTest
     {
+        public override BrowserNewContextOptions ContextOptions()
+        {
+            return new BrowserNewContextOptions()
+            {
+                RecordVideoDir = "videos/",
+                RecordVideoSize = new RecordVideoSize { Width = 1280, Height = 720 }
+            };
+        }
 
         [SetUp]
         public async Task Setup()
         {
             await Page.AddInitScriptAsync(@"
-                Object.defineProperty(navigator, 'webdriver', {
-                    get: () => undefined
-                });
-            ");
+                                            Object.defineProperty(navigator, 'webdriver', {
+                                                get: () => undefined
+                                            });
+                                         ");
 
             await Page.Context.SetExtraHTTPHeadersAsync(new Dictionary<string, string>
             {
