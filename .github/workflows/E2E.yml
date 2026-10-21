@@ -18,37 +18,33 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '10.0.x' # Укажите вашу версию .NET
+          dotnet-version: '10.0.x'
 
       - name: Build solution
         run: dotnet build --configuration Release
 
-      - name: Build test project
-        run: dotnet build PlaywrightTests/PlaywrightTests.csproj --configuration Debug
-
-      - name: Ensure browsers are installed
+      - name: Install Playwright Browsers
         run: |
           SCRIPT_PATH=$(find PlaywrightTests/bin -name "playwright.ps1" | head -n 1)
           if [ -z "$SCRIPT_PATH" ]; then
-            echo "playwright.ps1 not found. Check that Microsoft.Playwright package is referenced."
+            echo "playwright.ps1 not found"
             exit 1
           fi
           pwsh "$SCRIPT_PATH" install --with-deps
 
-      - name: Run ASP.NET Core App
+      - name: Start ASP.NET Core Server
         run: |
           dotnet run --project LR2WebDesign/LR2WebDesign.csproj --configuration Release --no-build --urls "http://localhost:5000" &
-          npx wait-on http://localhost:5000 --timeout 60000
           
+          for i in {1..60}; do
+            if curl -s http://localhost:5000 > /dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          exit 1
+
       - name: Run Playwright tests
-        run: dotnet test --no-build --configuration Release
+        run: dotnet test PlaywrightTests/PlaywrightTests.csproj --configuration Release --no-build
         env:
-          PLAYWRIGHT_TEST_BASE_URL: http://localhost:5000
-          
-      - name: Upload Playwright Report
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: playwright-report
-          path: tests/PlaywrightTests/playwright-report/
-          retention-days: 30
+          BASE_URL: http://localhost:5000
