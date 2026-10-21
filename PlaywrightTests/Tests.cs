@@ -134,5 +134,35 @@ namespace PlaywrightTests
             await regPage.RegAsync("user12345@example.com", "user12345", "Password12345@");
             await Expect(Page).ToHaveURLAsync(new Regex(@"^https?://[^/]+/ai-constructor/?(\?.*)?$"));
         }
+
+        [Test]
+        public async Task MainPageVisualTest()
+        {
+            var mainPage = new MainPage(Page);
+            await mainPage.GotoAsync();
+            await Page.WaitForLoadStateAsync(LoadState.NetworkIdle);
+
+            await Page.ScreenshotAsync(new PageScreenshotOptions
+            {
+                Path = "main-page-screenshot.png",
+                FullPage = true,
+                Animations = ScreenshotAnimations.Disabled
+            });
+        }
+
+        [Test]
+        public async Task LoginPageVisualTest()
+        {
+            var loginPage = new LoginPage(Page);
+            await loginPage.GotoAsync();
+            await Page.WaitForLoadStateAsync(LoadState.NetworkIdle);
+
+            await Page.ScreenshotAsync(new PageScreenshotOptions
+            {
+                Path = "login-page-screenshot.png",
+                FullPage = true,
+                Animations = ScreenshotAnimations.Disabled
+            });
+        }
     }
 }
