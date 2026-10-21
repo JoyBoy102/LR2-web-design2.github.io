@@ -16,7 +16,8 @@ namespace PlaywrightTests
             return new BrowserNewContextOptions()
             {
                 RecordVideoDir = "videos/",
-                RecordVideoSize = new RecordVideoSize { Width = 1280, Height = 720 }
+                RecordVideoSize = new RecordVideoSize { Width = 1280, Height = 720 },
+                IgnoreHTTPSErrors = true,
             };
         }
 
