@@ -12,10 +12,21 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddResponseCompression(options =>
+{
+    options.EnableForHttps = true;
+});
+
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, InMemoryUserRepository>();
+
+builder.Services.AddWebOptimizer(pipeline =>
+{
+    pipeline.MinifyCssFiles();
+    pipeline.MinifyJsFiles();
+});
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
@@ -59,6 +70,9 @@ builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
+app.UseResponseCompression();
+
+app.UseWebOptimizer();
 
 app.UseExceptionHandler("/error");
 
