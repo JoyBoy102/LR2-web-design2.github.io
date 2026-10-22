@@ -13,6 +13,14 @@ public class VisualTests : PageTest
     private const string BaselineDir = "VisualBaselines";
 
     private const string ActualDir = "VisualActual";
+    public override BrowserNewContextOptions ContextOptions()
+    {
+        return new BrowserNewContextOptions()
+        {
+            IgnoreHTTPSErrors = true,
+        };
+    }
+
 
     [Test]
     public async Task MainPageVisualTest()
